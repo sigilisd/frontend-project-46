@@ -1,14 +1,27 @@
 import path from 'node:path';
 import fs from 'fs';
+import _ from 'lodash';
 
 const buildFullPath = (filepath) => path.resolve(process.cwd(), filepath)
 
 const gendiff = (path1, path2) => {
     const absolute1 = buildFullPath(path1);
     const absolute2 = buildFullPath(path2);
-    const data1 = fs.readFileSync(absolute1, 'utf-8')
-    const data2 = fs.readFileSync(absolute2, 'utf-8')
-    console.log(data1, data2);
+    const data1 = JSON.parse(fs.readFileSync(absolute1, 'utf-8'));
+    const data2 = JSON.parse(fs.readFileSync(absolute2, 'utf-8'));
+    
+    const keys1 = Object.keys(data1);
+    const keys2 = Object.keys(data2);
+    const sortedKeys = _.union(keys1, keys2).sort();
+    console.log(sortedKeys);
+
+    const diff = sortedKeys.reduce((acc, key) => {
+        if (Object.hasOwn(data1, key) && !Object.hasOwn(data2, key)) {
+            acc.push(` - ${key}: ${data1[key]}`)
+        }
+        return acc;
+    }, ['{'])
+    console.log(diff);
 }
 
 export default gendiff;
