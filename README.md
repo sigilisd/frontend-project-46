@@ -41,3 +41,12 @@ gendiff filepath1.json filepath2.json
     }
 }
 ```
+
+# Команды
+
+```bash
+gendiff __fixtures__/file1.json  __fixtures__/file2.json
+```
+
+Команда для запуска: `gendiff __fixtures__/file1.json  __fixtures__/file2.json`
+[![asciicast](https://asciinema.org/a/q2uzsYcc1Xgfa4edrFsQGiEWp.svg)](https://asciinema.org/a/q2uzsYcc1Xgfa4edrFsQGiEWp)
