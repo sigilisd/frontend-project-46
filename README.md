@@ -39,4 +39,5 @@ gendiff filepath1.json filepath2.json
   + setting5: {
         key5: value5
     }
-}```
+}
+```
