@@ -16,7 +16,8 @@
 
 Пример использования:
 
-```# формат plain
+```
+# формат plain
 gendiff --format plain path/to/file.yml another/path/file.json
 
 Property 'common.follow' was added with value: false
