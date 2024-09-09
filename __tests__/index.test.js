@@ -3,6 +3,9 @@ import result from "../__fixtures__/result.js";
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 
+const { test } = require('jest');
+const { expect } = require('jest');
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
