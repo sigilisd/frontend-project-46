@@ -32,7 +32,7 @@ const gendiff = (path1, path2) => {
     }, ['{'])
     diff.push('}');
     const result = diff.join('\n');
-    console.log(result);
+    return result;
 };
 
 export default gendiff; 
