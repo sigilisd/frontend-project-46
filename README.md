@@ -3,6 +3,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a912a66b096c241611ed/maintainability)](https://codeclimate.com/github/sigilisd/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a912a66b096c241611ed/test_coverage)](https://codeclimate.com/github/sigilisd/frontend-project-46/test_coverage)
 
+[![Node CI](https://github.com/sigilisd/frontend-project-46/actions/workflows/node%20CI.yml/badge.svg)](https://github.com/sigilisd/frontend-project-46/actions)
+
 # Цель
 
 Вычислитель отличий – проект, который по-настоящему прокачивает даже опытных разработчиков. Здесь вам придется столкнуться с принятием сложных архитектурных решений, автоматизированным тестированием и непрерывной интеграцией, функциональным программированием, работе с древовидными структурами данных и рекурсивными алгоритмами.

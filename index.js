@@ -33,6 +33,6 @@ const gendiff = (path1, path2) => {
     diff.push('}');
     const result = diff.join('\n');
     console.log(result);
-}
+};
 
-export default gendiff;
+export default gendiff; 

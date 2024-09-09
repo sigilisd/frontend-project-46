@@ -12,4 +12,4 @@ program
     gendiff(filepath, filepath2)
   })
 
-program.parse();
+program.parse(); 
