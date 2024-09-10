@@ -1,8 +1,8 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/sigilisd/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sigilisd/frontend-project-46/actions)
+[![Node CI](https://github.com/sigilisd/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/sigilisd/frontend-project-46/actions/workflows/nodejs.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a912a66b096c241611ed/maintainability)](https://codeclimate.com/github/sigilisd/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a912a66b096c241611ed/test_coverage)](https://codeclimate.com/github/sigilisd/frontend-project-46/test_coverage)
-[![Node CI](https://github.com/sigilisd/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/sigilisd/frontend-project-46/actions/workflows/nodejs.yml)
 
 # Цель
 
@@ -51,5 +51,4 @@ gendiff filepath1.json filepath2.json
 gendiff __fixtures__/file1.json  __fixtures__/file2.json
 ```
 
-Команда для запуска: `gendiff __fixtures__/file1.json  __fixtures__/file2.json`
 [![asciicast](https://asciinema.org/a/q2uzsYcc1Xgfa4edrFsQGiEWp.svg)](https://asciinema.org/a/q2uzsYcc1Xgfa4edrFsQGiEWp)
