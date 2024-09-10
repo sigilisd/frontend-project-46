@@ -13,3 +13,15 @@ test('check json stylish', () => {
     const file2 = getFixturePath('file2.json');
     expect(gendiff(file1, file2)).toEqual(result);
 });
+
+test('check yaml stylish', () => {
+    const file1 = getFixturePath('file1.yaml');
+    const file2 = getFixturePath('file2.yaml');
+    expect(gendiff(file1, file2)).toEqual(result);
+});
+
+test('check yml stylish', () => {
+    const file1 = getFixturePath('file1.yml');
+    const file2 = getFixturePath('file2.yml');
+    expect(gendiff(file1, file2)).toEqual(result);
+});
