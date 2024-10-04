@@ -1,7 +1,8 @@
-import gendiff from "../index.js";
-import result from "../__fixtures__/result.js";
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
+import { test, expect } from '@jest/globals';
+import gendiff from '../src/index.js';
+import result from '../__fixtures__/result.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
