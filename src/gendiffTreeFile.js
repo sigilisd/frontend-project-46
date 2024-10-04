@@ -1,28 +1,52 @@
 import _ from 'lodash';
 
-const gendiffTree = (data1, data2) => {
+const createChildrenTrees = (data1, data2) => {
   const keys1 = Object.keys(data1);
   const keys2 = Object.keys(data2);
-  const sortedKeys = _.union(keys1, keys2).sort();
-  //console.log(sortedKeys);
+  const sortedKeys = _.sortBy(_.union(keys1, keys2));
 
-  const diff = sortedKeys.reduce((acc, key) => {
-      if (Object.hasOwn(data1, key) && !Object.hasOwn(data2, key)) {
-          acc.push(` - ${key}: ${data1[key]}`)
-      } else if (Object.hasOwn(data2, key) && !Object.hasOwn(data1, key)) {
-          acc.push(` + ${key}: ${data2[key]}`)
-      }  else if (Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
-          if (data1[key] === data2[key]) {
-              acc.push(`   ${key}: ${data2[key]}`)
-          } else if (data1[key] !== data2[key]) {
-              acc.push(` - ${key}: ${data1[key]}`)
-              acc.push(` + ${key}: ${data2[key]}`)
-          } 
-       }  
-      return acc;
-  }, ['{'])
-  diff.push('}');
-  const result = diff.join('\n');
-  return result;
+  const children = sortedKeys.map((key) => {
+    if (! _.has(data1, key)) {
+      return {
+        type: 'added',
+        key,
+        value: data2[key]
+      };
+    }
+    if (! _.has(data2, key)) {
+      return {
+        type: 'deleted',
+        key,
+        value: data1[key],
+      };
+    }
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
+      return {
+        type: 'ancestor',
+        key,
+        children: createChildrenTrees(data1[key], data2[key]),
+      };
+    } 
+    if (_.isEqual(data1[key], data2[key])) {
+      return {
+        type: 'not redacted',
+        key,
+        value: data1 [key],
+      };
+    }
+    return {
+      type: 'changed',
+      key,
+      oldValue: data1[key],
+      newValue: data2[key],
+    };
+  });
+  return children
 };
+
+const gendiffTree = (data1, data2) => ({
+  type: 'main ancestor',
+  children: createChildrenTrees(data1, data2),
+});
+
 export default gendiffTree;
