@@ -52,3 +52,9 @@ gendiff __fixtures__/file1.json  __fixtures__/file2.json
 ```
 
 [![asciicast](https://asciinema.org/a/q2uzsYcc1Xgfa4edrFsQGiEWp.svg)](https://asciinema.org/a/q2uzsYcc1Xgfa4edrFsQGiEWp)
+
+```bash
+make run
+```
+
+[![asciicast](https://asciinema.org/a/y0RCm5lkoE2gB1AV8AugdFxUl.svg)](https://asciinema.org/a/y0RCm5lkoE2gB1AV8AugdFxUl)
