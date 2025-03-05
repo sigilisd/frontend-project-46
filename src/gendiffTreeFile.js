@@ -29,13 +29,13 @@ const createChildrenTrees = (data1, data2) => {
     } 
     if (_.isEqual(data1[key], data2[key])) {
       return {
-        type: 'not redacted',
+        type: 'notRedacted',
         key,
         value: data1 [key],
       };
     }
     return {
-      type: 'changed',
+      type: 'redacted',
       key,
       oldValue: data1[key],
       newValue: data2[key],
@@ -45,7 +45,7 @@ const createChildrenTrees = (data1, data2) => {
 };
 
 const gendiffTree = (data1, data2) => ({
-  type: 'main ancestor',
+  type: 'mainAncestor',
   children: createChildrenTrees(data1, data2),
 });
 
