@@ -53,8 +53,16 @@ gendiff __fixtures__/file1.json  __fixtures__/file2.json
 
 [![asciicast](https://asciinema.org/a/q2uzsYcc1Xgfa4edrFsQGiEWp.svg)](https://asciinema.org/a/q2uzsYcc1Xgfa4edrFsQGiEWp)
 
+Выполнение 7 шага
 ```bash
 make run
 ```
 
 [![asciicast](https://asciinema.org/a/y0RCm5lkoE2gB1AV8AugdFxUl.svg)](https://asciinema.org/a/y0RCm5lkoE2gB1AV8AugdFxUl)
+
+Выполнение 8 шага
+```bash
+make plain
+```
+
+[![asciicast](https://asciinema.org/a/19xL5WllWlihbEVzG0RCUnPBM.svg)](https://asciinema.org/a/19xL5WllWlihbEVzG0RCUnPBM)
