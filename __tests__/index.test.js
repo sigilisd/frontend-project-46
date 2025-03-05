@@ -5,6 +5,7 @@ import { test, expect } from '@jest/globals';
 import gendiff from '../src/index.js';
 import resultStylish from '../__fixtures__/resultStylish.js';
 import resultPlain from '../__fixtures__/resultPlain.js';
+import resultJson from '../__fixtures__/resultJson.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -16,6 +17,7 @@ test('comparison_stylish', () => {
     const correctFile2 = getFixturePath('file2.json');
     expect(gendiff(correctFile1, correctFile2)).toEqual(resultStylish);
     expect(gendiff(correctFile1, correctFile2, 'plain')).toEqual(resultPlain);
+    expect(gendiff(correctFile1, correctFile2, 'json')).toEqual(resultJson);
 });
 
 test('comparison_yaml_stylish', () => {
@@ -23,6 +25,7 @@ test('comparison_yaml_stylish', () => {
     const correctFile2 = getFixturePath('file2.yaml');
     expect(gendiff(correctFile1, correctFile2)).toEqual(resultStylish);
     expect(gendiff(correctFile1, correctFile2, 'plain')).toEqual(resultPlain);
+    expect(gendiff(correctFile1, correctFile2, 'json')).toEqual(resultJson);
 });
 
 test('comparison_yml_stylish', () => {
@@ -30,4 +33,5 @@ test('comparison_yml_stylish', () => {
     const correctFile2 = getFixturePath('file2.yml');
     expect(gendiff(correctFile1, correctFile2)).toEqual(resultStylish);
     expect(gendiff(correctFile1, correctFile2, 'plain')).toEqual(resultPlain);
+    expect(gendiff(correctFile1, correctFile2, 'json')).toEqual(resultJson);
 });
