@@ -16,52 +16,48 @@ const stringify = (data, depth) => {
     return `${data}`;
   }
   const keys = Object.keys(data);
-  const lines = keys.map((key) => `${currentSpaceForDeeplyChild(depth)}  ${key}: ${stringify(data[key], depth + 1)}`);
+  const lines = keys.flatMap((key) => `${currentSpaceForDeeplyChild(depth)}  ${key}: ${stringify(data[key], depth + 1)}`);
   return joinStrings(lines, depth);
 };
 
-const formatToStylish = (data) => {
-  const result = [];
-  const formatNode = (node, depth) => {
-    switch (node.type) {
-      case 'mainAncestor':
-        result.push('{');
-        node.children.forEach((child) => formatNode(child, depth));
-        result.push('}');
-        break;
+const nodeString = (sign, depth, node) => `${currentSpace(depth)}${sign} ${node.key}: ${stringify(node.value, depth)}`;
 
-      case 'ancestor':
-        result.push(`${currentSpaceFirstStep(depth)}${node.key}: {`);
-        node.children.forEach((child) => formatNode(child, depth + 1));
-        result.push(`${currentSpaceFirstStep(depth)}}`);
-        break;
+const formatNode = (node, depth) => {
+  switch (node.type) {
+    case 'mainAncestor':
+      return [
+        '{',
+        ...node.children.flatMap((child) => formatNode(child, depth)),
+        '}',
+      ];
 
-      case 'notRedacted':
-        result.push(`${currentSpace(depth)}  ${node.key}: ${stringify(node.value, depth)}`);
-        break;
+    case 'ancestor':
+      return [
+        `${currentSpaceFirstStep(depth)}${node.key}: {`,
+        ...node.children.flatMap((child) => formatNode(child, depth + 1)),
+        `${currentSpaceFirstStep(depth)}}`,
+      ];
 
-      case 'deleted':
-        result.push(`${currentSpace(depth)}- ${node.key}: ${stringify(node.value, depth)}`);
-        break;
+    case 'notRedacted':
+      return nodeString(' ', depth, node);
 
-      case 'added':
-        result.push(`${currentSpace(depth)}+ ${node.key}: ${stringify(node.value, depth)}`);
-        break;
+    case 'deleted':
+      return nodeString('-', depth, node);
 
-      case 'redacted':
-        result.push(`${currentSpace(depth)}- ${node.key}: ${stringify(node.oldValue, depth)}`);
-        result.push(`${currentSpace(depth)}+ ${node.key}: ${stringify(node.newValue, depth)}`);
-        break;
+    case 'added':
+      return nodeString('+', depth, node);
 
-      default:
-        throw new Error('Not detected node type');
-    }
-  };
+    case 'redacted':
+      return [
+        `${currentSpace(depth)}- ${node.key}: ${stringify(node.oldValue, depth)}`,
+        `${currentSpace(depth)}+ ${node.key}: ${stringify(node.newValue, depth)}`,
+      ];
 
-  formatNode(data, 1);
-
-  const formattedData = result.join('\n');
-  return formattedData;
+    default:
+      throw new Error('Not detected node type');
+  }
 };
+
+const formatToStylish = (data) => formatNode(data, 1).join('\n');
 
 export default formatToStylish;
