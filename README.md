@@ -66,3 +66,10 @@ make plain
 ```
 
 [![asciicast](https://asciinema.org/a/19xL5WllWlihbEVzG0RCUnPBM.svg)](https://asciinema.org/a/19xL5WllWlihbEVzG0RCUnPBM)
+
+Выполнение 9 шага
+```bash
+make json
+```
+
+[![asciicast](https://asciinema.org/a/cec0C7FlucXdFiumDeWmO5SEj.svg)](https://asciinema.org/a/cec0C7FlucXdFiumDeWmO5SEj)
