@@ -19,4 +19,4 @@ const gendiffFunction = (path1, path2, format = 'stylish') => {
 }
 export default gendiffFunction;
 
-console.log(gendiffFunction('__fixtures__/file1.json', '__fixtures__/file2.json'));
+//console.log(gendiffFunction('__fixtures__/file1.json', '__fixtures__/file2.json'));
