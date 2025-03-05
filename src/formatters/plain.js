@@ -23,23 +23,23 @@ const formatToPlain = (data) => {
 
       case 'notRedacted':
         return null;
-      
+
       case 'deleted':
         return `Property '${actualPath}' was removed`;
-      
+
       case 'added':
         return `Property '${actualPath}' was added with value: ${getFormattedValue(child.value)}`;
-      
+
       case 'redacted':
         return `Property '${actualPath}' was updated. From ${getFormattedValue(child.oldValue)} to ${getFormattedValue(child.newValue)}`;
-      
+
       default:
-        throw new Error ('Not detected node type');
+        throw new Error('Not detected node type');
     }
-  })
+  });
 
   const dontFormatData = formatNode(data.children, []);
-  return dontFormatData.flat(Infinity).filter((arrElement) => arrElement).join('\n')
+  return dontFormatData.flat(Infinity).filter((arrElement) => arrElement).join('\n');
 };
 
 export default formatToPlain;

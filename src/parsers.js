@@ -1,4 +1,5 @@
 import yaml from 'js-yaml';
+
 const parser = (file, extension) => {
   switch (extension) {
     case 'json':
@@ -8,7 +9,7 @@ const parser = (file, extension) => {
     case 'yml':
       return yaml.load(file);
     default:
-      return 'default for the linter'
+      return 'default for the linter';
   }
-}
+};
 export default parser;

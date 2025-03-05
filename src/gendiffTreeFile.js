@@ -6,14 +6,14 @@ const createChildrenTrees = (data1, data2) => {
   const sortedKeys = _.sortBy(_.union(keys1, keys2));
 
   const children = sortedKeys.map((key) => {
-    if (! _.has(data1, key)) {
+    if (!_.has(data1, key)) {
       return {
         type: 'added',
         key,
-        value: data2[key]
+        value: data2[key],
       };
     }
-    if (! _.has(data2, key)) {
+    if (!_.has(data2, key)) {
       return {
         type: 'deleted',
         key,
@@ -26,12 +26,12 @@ const createChildrenTrees = (data1, data2) => {
         key,
         children: createChildrenTrees(data1[key], data2[key]),
       };
-    } 
+    }
     if (_.isEqual(data1[key], data2[key])) {
       return {
         type: 'notRedacted',
         key,
-        value: data1 [key],
+        value: data1[key],
       };
     }
     return {
@@ -41,7 +41,7 @@ const createChildrenTrees = (data1, data2) => {
       newValue: data2[key],
     };
   });
-  return children
+  return children;
 };
 
 const gendiffTree = (data1, data2) => ({

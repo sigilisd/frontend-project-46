@@ -16,7 +16,7 @@ const gendiffFunction = (path1, path2, format = 'stylish') => {
   const data2 = getData(filePath2);
 
   return formatter(gendiffTree(data1, data2), format);
-}
+};
 export default gendiffFunction;
 
-//console.log(gendiffFunction('__fixtures__/file1.json', '__fixtures__/file2.json'));
+// console.log(gendiffFunction('__fixtures__/file1.json', '__fixtures__/file2.json'));

@@ -12,6 +12,6 @@ program
     const options = program.opts();
     const formatterFormat = options.format;
     console.log(gendiffFunction(filepath, filepath2, formatterFormat));
-  })
+  });
 
-program.parse(); 
+program.parse();
